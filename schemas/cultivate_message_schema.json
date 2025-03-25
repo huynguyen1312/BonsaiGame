@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Cultivate",
+  "type": "object",
+  "required": [
+    "removedTilesAxialCoordinates",
+    "playedTiles",
+    "claimedGoals",
+    "renouncedGoals"
+  ],
+  "properties": {
+    "removedTilesAxialCoordinates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AxialCoordinate"
+      }
+    },
+    "playedTiles":  {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "first",
+          "second"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "enum": [
+              "WOOD",
+              "LEAF",
+              "FLOWER",
+              "FRUIT"
+            ]
+          },
+          "second": {
+            "$ref": "#/definitions/AxialCoordinate"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "claimedGoals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string",
+            "enum": [
+              "GREEN",
+              "BROWN",
+              "PINK",
+              "ORANGE",
+              "BLUE"
+            ]
+          },
+          "second": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        }
+      }
+    },
+    "renouncedGoals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string",
+            "enum": [
+              "GREEN",
+              "BROWN",
+              "PINK",
+              "ORANGE",
+              "BLUE"
+            ]
+          },
+          "second": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AxialCoordinate": {
+      "type": "object",
+      "required": [
+        "first",
+        "second"
+      ],
+      "properties": {
+        "first": {
+          "type": "integer"
+        },
+        "second": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

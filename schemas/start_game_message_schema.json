@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Start Game",
+  "type": "object",
+  "required": [
+    "orderedPlayerNames",
+    "chosenGoalTiles",
+    "orderedCards"
+  ],
+  "properties": {
+    "orderedPlayerNames": {
+      "description": "Player names passed in correct order.",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "playerName": { "type": "string" },
+          "playerColor" : {
+            "type": "string",
+            "enum": [ "PURPLE", "BLACK", "BLUE", "RED" ]
+          }
+        }
+      }
+    },
+    "chosenGoalTiles": {
+      "description": "The 3  goal-tiles chosen for the current game.",
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "enum": [
+          "GREEN",
+          "BROWN",
+          "PINK",
+          "ORANGE",
+          "BLUE"
+        ]
+      }
+    },
+    "orderedCards": {
+      "description": "All Zen-cards suitable for the current game, in the correct/same order for every player. Drawing from `last()` element",
+      "type": "array",
+      "minItems": 32,
+      "maxItems": 47,
+      "items": {
+        "$ref": "#/definitions/PairOfGoalTileAndID"
+      }
+    }
+  },
+  "definitions": {
+    "PairOfGoalTileAndID": {
+      "type": "object",
+      "required": [
+        "first",
+        "second"
+      ],
+      "properties": {
+        "first": {
+          "type": "string",
+          "enum": [
+            "TOOL",
+            "GROWTH",
+            "PARCHMENT",
+            "HELPER",
+            "MASTER"
+          ]
+        },
+        "second": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

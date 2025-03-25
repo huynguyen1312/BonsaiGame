@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Meditate",
+  "type": "object",
+  "required": [
+    "removedTilesAxialCoordinates",
+    "chosenCardPosition",
+    "playedTiles",
+    "drawnTiles",
+    "claimedGoals",
+    "renouncedGoals",
+    "discardedTiles"
+  ],
+  "properties": {
+    "removedTilesAxialCoordinates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AxialCoordinate"
+      }
+    },
+    "chosenCardPosition": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "playedTiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "first",
+          "second"
+        ],
+        "properties": {
+          "first": {
+            "type": "string",
+            "enum": [
+              "WOOD",
+              "LEAF",
+              "FLOWER",
+              "FRUIT"
+            ]
+          },
+          "second": {
+            "$ref": "#/definitions/AxialCoordinate"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "drawnTiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "WOOD",
+          "LEAF",
+          "FLOWER",
+          "FRUIT"
+        ]
+      }
+    },
+    "claimedGoals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string",
+            "enum": [
+              "GREEN",
+              "BROWN",
+              "PINK",
+              "ORANGE",
+              "BLUE"
+            ]
+          },
+          "second": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        }
+      }
+    },
+    "renouncedGoals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "string",
+            "enum": [
+              "GREEN",
+              "BROWN",
+              "PINK",
+              "ORANGE",
+              "BLUE"
+            ]
+          },
+          "second": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        }
+      }
+    },
+    "discardedTiles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "WOOD",
+          "LEAF",
+          "FLOWER",
+          "FRUIT"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AxialCoordinate": {
+      "type": "object",
+      "required": [
+        "first",
+        "second"
+      ],
+      "properties": {
+        "first": {
+          "type": "integer"
+        },
+        "second": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
